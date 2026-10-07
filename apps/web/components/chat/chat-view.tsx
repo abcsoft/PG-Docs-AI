@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api/client";
 import { ChatRequestError, streamChatMessage, type ChatCitation } from "@/lib/api/chat-stream";
+import { SUGGESTED_PROMPTS } from "@/lib/demo-workflows";
 import { useOrg } from "@/components/org-provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -171,8 +172,22 @@ export function ChatView({ conversationId }: { conversationId: string | null }) 
       <div className="flex-1 overflow-y-auto">
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 py-6">
           {messages.length === 0 && !pendingUser ? (
-            <div className="pt-24 text-center text-sm text-muted-foreground">
-              Start a conversation — replies stream in real time.
+            <div className="flex flex-col items-center gap-4 pt-16 text-center">
+              <p className="text-sm text-muted-foreground">
+                Ask anything about your workspace documents — answers arrive with citations.
+              </p>
+              <div className="flex max-w-md flex-wrap justify-center gap-1.5">
+                {SUGGESTED_PROMPTS.map((suggestion) => (
+                  <button
+                    key={suggestion.label}
+                    type="button"
+                    onClick={() => setInput(suggestion.prompt)}
+                    className="rounded-full border px-3 py-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {suggestion.label}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : null}
           {messages.map((message) => (

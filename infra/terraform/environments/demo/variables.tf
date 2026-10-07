@@ -1,6 +1,6 @@
 variable "project_id" {
   type    = string
-  default = "saas-genai-starter-demo"
+  default = "pg-docs-ai-demo"
 }
 
 variable "region" {
@@ -25,7 +25,7 @@ variable "api_image" {
 
 variable "web_base_url" {
   type    = string
-  default = "https://saas-genai-starter-web.vercel.app"
+  default = "https://pg-docs-ai-web.vercel.app"
 }
 
 variable "admin_emails" {
@@ -35,10 +35,10 @@ variable "admin_emails" {
 
 variable "email_from" {
   type    = string
-  default = "SaaS GenAI Starter <noreply@davidelmalih.com>"
+  default = "PG Docs AI <noreply@davidelmalih.com>"
 }
 
 variable "github_repository" {
   type    = string
-  default = "delmalih/saas-genai-starter"
+  default = "pgsofts/pg-docs-ai"
 }

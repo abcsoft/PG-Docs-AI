@@ -6,8 +6,10 @@ surfaces as 'could not find table X' when a ForeignKey resolves lazily.
 Import this module from any non-FastAPI entry point.
 """
 
+import src.domains.apikeys.models
 import src.domains.chat.models
 import src.domains.documents.models
+import src.domains.insights.models
 import src.domains.llm_settings.models
 import src.domains.tenants.models
 import src.domains.usage.models  # noqa: F401

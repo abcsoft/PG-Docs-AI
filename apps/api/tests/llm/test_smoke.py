@@ -63,7 +63,7 @@ async def test_prompt_cache_hits_on_repeated_call() -> None:
     """
     provider = AnthropicProvider(api_key=os.environ["ANTHROPIC_API_KEY"], model="claude-sonnet-4-6")
     stable_system = (
-        "You are a meticulous assistant for the saas-genai-starter test suite. "
+        "You are a meticulous assistant for the pg-docs-ai test suite. "
         "Follow these numbered rules precisely.\n"
         + "\n".join(
             f"Rule {i}: always stay concise, factual and deterministic in case {i}."

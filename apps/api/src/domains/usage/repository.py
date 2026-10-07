@@ -26,7 +26,9 @@ class UsageRepository(TenantScopedRepository[LLMUsage]):
 
     async def daily_costs(self, start: datetime, end: datetime) -> list[DailyCost]:
         """Cost per day, feature and model for the active tenant."""
-        day = func.date_trunc("day", LLMUsage.created_at).label("day")
+        # Truncate in UTC, not the server session timezone — day boundaries
+        # must not shift with the database's local time.
+        day = func.date(LLMUsage.created_at.op("AT TIME ZONE")("UTC")).label("day")
         statement = (
             select(
                 day,
@@ -50,7 +52,7 @@ class UsageRepository(TenantScopedRepository[LLMUsage]):
         result = await self._db.execute(statement)
         return [
             DailyCost(
-                day=row.day.date(),
+                day=row.day,
                 feature=row.feature,
                 model=row.model,
                 cost_usd=row.cost_usd,

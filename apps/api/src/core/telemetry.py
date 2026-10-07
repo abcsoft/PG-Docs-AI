@@ -53,4 +53,4 @@ def setup_telemetry(app: FastAPI | None = None, exporter: SpanExporter | None = 
 
 
 def get_tracer() -> trace.Tracer:
-    return trace.get_tracer("saas-genai-starter")
+    return trace.get_tracer("pg-docs-ai")

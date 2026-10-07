@@ -31,6 +31,21 @@ async def get_current_tenant(
     # Imported here to keep core free of domain imports at module load.
     from src.domains.tenants.repository import TenantRepository
 
+    # API-key requests are org-scoped by the key itself; the X-Org-Id
+    # header is ignored so a leaked key cannot be pointed at another org.
+    if user.api_key_org_id is not None:
+        organization = await TenantRepository(db).get_organization(user.api_key_org_id)
+        if organization is None:
+            raise NotFound("Organization not found")
+        return TenantContext(
+            organization_id=organization.id,
+            user_id=user.user_id,
+            role="member",
+            plan=organization.plan,
+            rpm_override=organization.rate_limit_rpm_override,
+            tpd_override=organization.rate_limit_tpd_override,
+        )
+
     if not x_org_id:
         raise BadRequest("Missing X-Org-Id header")
     try:

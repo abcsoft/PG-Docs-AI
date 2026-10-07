@@ -1,6 +1,6 @@
 # Tech Steps — Development Backlog
 
-Jira-style backlog for `saas-genai-starter`. Tickets are grouped by epic and ordered by
+Jira-style backlog for `pg-docs-ai`. Tickets are grouped by epic and ordered by
 dependency. IDs are stable (`SGS-XXX`) — reference them in branch names (`sgs-021-llm-resilience`)
 and commit messages (`feat(llm): add retry/backoff [SGS-021]`).
 
@@ -500,7 +500,7 @@ domain-adapted product from a handful of parameters.
   - An interactive fallback for humans: `make bootstrap` script applying the same
     manifest.
   - Keep the demo deployable post-bootstrap: Terraform vars and CI read names from
-    the manifest instead of hardcoding `saas-genai-starter`.
+    the manifest instead of hardcoding `pg-docs-ai`.
 **Acceptance criteria**
 - "Point Claude Code at this repo with these 6 parameters" produces a renamed,
   rebranded app with green tests in a fresh clone — verified end-to-end once.

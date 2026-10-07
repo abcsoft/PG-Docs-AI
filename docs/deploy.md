@@ -29,3 +29,20 @@ Notes and gotchas:
   driver.
 - **Redis is optional in a pinch**: the rate limiter fails open with an
   error log if Redis is unreachable.
+
+## Local / non-Docker alternative
+
+Any PostgreSQL 16 + pgvector and Redis 7 you can reach work in place of
+docker-compose. Point `apps/api/.env` at them (`DATABASE_URL`, `REDIS_URL`),
+create the databases, apply `scripts/auth-schema.sql`, then `make migrate` as
+usual. The demo workspace seeder (`apps/api/scripts/seed_demo.py`) runs
+ingestion inline and needs no worker process.
+
+## PG Docs AI launch extras
+
+- **Demo workspace**: after the first user signs up, run
+  `cd apps/api && uv run python scripts/seed_demo.py --email <user>` with
+  server-wide keys configured, so the seeded documents get real embeddings.
+- **Domain**: `pgsofts.org` — set it as `BETTER_AUTH_URL` (web) and
+  `WEB_BASE_URL` (api, used for CORS + email links).
+- **Go-live gate**: work through [`docs/production-checklist.md`](production-checklist.md).

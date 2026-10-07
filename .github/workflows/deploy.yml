@@ -2,7 +2,7 @@ name: Deploy API
 
 # Keyless deploy: GitHub OIDC -> Workload Identity Federation -> deployer SA.
 # Repository variables (Settings > Secrets and variables > Actions > Variables):
-#   GCP_PROJECT_ID    e.g. saas-genai-starter-demo
+#   GCP_PROJECT_ID    e.g. pg-docs-ai-demo
 #   GCP_WIF_PROVIDER  terraform output wif_provider
 #   GCP_DEPLOYER_SA   terraform output deployer_service_account
 
@@ -21,7 +21,7 @@ concurrency:
 env:
   REGION: us-east1
   SERVICE: api
-  IMAGE: us-east1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/saas-genai-starter/api:${{ github.sha }}
+  IMAGE: us-east1-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/pg-docs-ai/api:${{ github.sha }}
 
 jobs:
   deploy:

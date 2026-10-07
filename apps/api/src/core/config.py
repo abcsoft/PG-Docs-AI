@@ -81,7 +81,7 @@ class Settings(BaseSettings):
     # Tracing — spans export to OTEL_EXPORTER_OTLP_ENDPOINT when set,
     # to the console otherwise.
     otel_enabled: bool = False
-    otel_service_name: str = "saas-genai-starter-api"
+    otel_service_name: str = "pg-docs-ai-api"
     otel_exporter_otlp_endpoint: str | None = None
 
     @property

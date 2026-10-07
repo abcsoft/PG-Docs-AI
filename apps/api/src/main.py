@@ -11,10 +11,12 @@ from src.core.health import router as health_router
 from src.core.logging import setup_logging
 from src.core.telemetry import setup_telemetry
 from src.domains.admin.router import router as admin_router
+from src.domains.apikeys.router import router as apikeys_router
 from src.domains.billing.router import router as billing_router
 from src.domains.billing.router import webhooks_router as billing_webhooks_router
 from src.domains.chat.router import router as chat_router
 from src.domains.documents.router import router as documents_router
+from src.domains.insights.router import router as insights_router
 from src.domains.jobs.router import router as jobs_router
 from src.domains.llm_settings.router import router as llm_settings_router
 from src.domains.tenants.router import invitations_router
@@ -27,7 +29,7 @@ def create_app() -> FastAPI:
     setup_logging()
     settings = get_settings()
     app = FastAPI(
-        title="saas-genai-starter API",
+        title="PG Docs AI API",
         docs_url=None if settings.is_production else "/docs",
         redoc_url=None,
     )
@@ -61,6 +63,8 @@ def create_app() -> FastAPI:
     app.include_router(chat_router)
     app.include_router(usage_router)
     app.include_router(documents_router)
+    app.include_router(insights_router)
+    app.include_router(apikeys_router)
     app.include_router(llm_settings_router)
     app.include_router(admin_router)
     app.include_router(jobs_router)

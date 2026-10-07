@@ -1,4 +1,5 @@
 import time
+import uuid
 from dataclasses import dataclass
 from functools import lru_cache
 from typing import Annotated, Any
@@ -6,8 +7,10 @@ from typing import Annotated, Any
 import httpx
 import jwt
 from fastapi import Depends, Request
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.core.config import get_settings
+from src.core.db import get_db
 from src.core.errors import AuthServiceUnavailable, Unauthorized
 
 JWT_ALGORITHMS = ["EdDSA"]  # Better Auth signs with Ed25519 by default
@@ -60,15 +63,37 @@ class AuthenticatedUser:
     user_id: str
     email: str | None
     name: str | None = None
+    # Set when the request authenticated with a workspace API key: the key
+    # is org-scoped, so the org is fixed by the key, not by X-Org-Id.
+    api_key_org_id: uuid.UUID | None = None
 
 
 async def get_current_user(
     request: Request,
     jwks: Annotated[JwksCache, Depends(get_jwks_cache)],
+    db: Annotated[AsyncSession, Depends(get_db)],
 ) -> AuthenticatedUser:
     scheme, _, token = request.headers.get("Authorization", "").partition(" ")
     if scheme.lower() != "bearer" or not token:
         raise Unauthorized("Missing bearer token")
+
+    # Workspace API keys (pgda_…) authenticate against their SHA-256 hash —
+    # only that hash is stored, so a database leak leaks no usable keys.
+    from src.domains.apikeys.models import KEY_PREFIX
+
+    if token.startswith(KEY_PREFIX):
+        from src.domains.apikeys.service import authenticate_request_key
+
+        record = await authenticate_request_key(db, token)
+        if record is None:
+            raise Unauthorized("Invalid API key")
+        await db.commit()
+        return AuthenticatedUser(
+            user_id=f"apikey:{record.prefix}",
+            email=None,
+            name=record.name,
+            api_key_org_id=record.tenant_id,
+        )
 
     try:
         kid = jwt.get_unverified_header(token).get("kid")

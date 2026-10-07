@@ -20,32 +20,33 @@ export const metadata: Metadata = {
   // Resolves relative OG/canonical URLs site-wide.
   metadataBase: new URL(siteUrl),
   title: {
-    default: "SaaS GenAI Starter",
-    template: "%s · SaaS GenAI Starter",
+    default: "PG Docs AI — AI document intelligence with citations",
+    template: "%s · PG Docs AI",
   },
   description:
-    "Production-grade open-source SaaS starter for GenAI products: multi-tenancy, LLM cost tracking, observability, infra as code.",
+    "PG Docs AI is a multi-tenant AI document intelligence workspace: upload contracts, proposals and policies, then get Claude-powered answers, summaries, structured extractions, comparisons and reports with verifiable page-level citations.",
   keywords: [
-    "SaaS starter",
-    "GenAI boilerplate",
-    "Next.js FastAPI starter",
-    "multi-tenant",
-    "RAG template",
-    "LLM cost tracking",
+    "AI document intelligence",
+    "RAG workspace",
+    "document Q&A with citations",
+    "Claude document analysis",
+    "contract analysis",
+    "document comparison",
+    "extraction templates",
   ],
   openGraph: {
     type: "website",
-    siteName: "SaaS GenAI Starter",
-    title: "SaaS GenAI Starter",
+    siteName: "PG Docs AI",
+    title: "PG Docs AI — AI document intelligence with citations",
     description:
-      "Production-grade open-source SaaS starter for GenAI products: multi-tenancy, BYO-key LLM layer, RAG with citations, evals, $0 infra.",
+      "Upload contracts, proposals and policies. Get Claude-powered answers, summaries, extractions, comparisons and reports — every claim cited to the page it came from.",
     url: "/",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaaS GenAI Starter",
+    title: "PG Docs AI — AI document intelligence with citations",
     description:
-      "Production-grade open-source SaaS starter for GenAI products — clone it and ship.",
+      "Answers, summaries, extractions and reports from your documents — with verifiable page-level citations.",
   },
   alternates: { canonical: "/" },
 };

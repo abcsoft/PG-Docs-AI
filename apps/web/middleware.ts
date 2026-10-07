@@ -38,5 +38,6 @@ export const config = {
     "/settings/:path*",
     "/invite/:path*",
     "/admin/:path*",
+    "/reports/:path*",
   ],
 };

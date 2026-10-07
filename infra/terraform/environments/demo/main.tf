@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "gcs" {
-    bucket = "saas-genai-starter-demo-tfstate"
+    bucket = "pg-docs-ai-demo-tfstate"
     prefix = "demo"
   }
 }
@@ -79,7 +79,7 @@ module "registry" {
   source        = "../../modules/artifact-registry"
   project_id    = var.project_id
   region        = var.region
-  repository_id = "saas-genai-starter"
+  repository_id = "pg-docs-ai"
   depends_on    = [google_project_service.apis]
 }
 

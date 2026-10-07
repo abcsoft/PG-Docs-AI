@@ -1,7 +1,7 @@
 [project]
 name = "api"
 version = "0.1.0"
-description = "saas-genai-starter API — FastAPI backend"
+description = "pg-docs-ai API — FastAPI backend"
 requires-python = ">=3.12"
 dependencies = [
     "alembic>=1.18.4",

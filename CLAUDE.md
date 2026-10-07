@@ -5,14 +5,19 @@ when working with code in this repository.
 
 ## Project Overview
 
-`saas-genai-starter` is an **open-source, production-grade SaaS starter for GenAI products**.
-It is a public portfolio project: code quality, architecture clarity, and documentation matter
-as much as features. The pitch: "the starter I wish I had when founding my last SaaS" —
-it covers what demo-grade starters ignore: multi-tenancy, LLM cost tracking, resilience,
-observability, infra as code, tests, and evals.
+**PG Docs AI** (pgsofts.org) is a production-ready, multi-tenant SaaS product for
+**AI document intelligence**: teams upload contracts, proposals, policies and
+research into workspaces, and Claude answers questions, summarizes, extracts
+structured data, compares documents and generates reports — with verifiable
+page-level citations derived from a numbered source list (invented markers are
+dropped in post-processing, never trusted).
 
-**Everything in this repo is written in English** (code, comments, docs, commit messages,
-README), even if the maintainer communicates in French. Never write French in committed files.
+Built on the `saas-genai-starter` foundation (build history in `tech-steps.md`).
+Core loop: upload → ingest (parse/chunk/embed, pgvector) → ask → cited answer →
+summary/extraction/comparison → report export.
+
+**Everything in this repo is written in English** (code, comments, docs, commit
+messages, README). Never write French in committed files.
 
 ## Workflow
 
@@ -52,19 +57,33 @@ cd apps/api && uv run pytest                           # API tests only
 ```
 apps/
 ├── web/                  # Next.js 15, App Router, TypeScript strict
-│   ├── app/(marketing)/  # Public landing page
-│   ├── app/(app)/        # Protected app: chat, documents, usage, settings, admin
+│   ├── app/(marketing)/  # Landing page + trust pages (privacy, terms, security, about, contact)
+│   ├── app/(app)/        # Protected app: chat, documents (+ [id] viewer), reports, usage, settings, admin
 │   ├── components/ui/    # shadcn/ui (vendored)
 │   └── lib/api/          # Typed client generated from FastAPI OpenAPI + fetch/SSE wrapper
 ├── api/                  # FastAPI, Python 3.12, managed with uv
 │   ├── src/core/         # config (pydantic-settings), db (SQLAlchemy 2 async), logging, telemetry
-│   ├── src/domains/      # One package per domain: tenants/, chat/, documents/, usage/, billing/
-│   │   └── <domain>/     # router.py, service.py, repository.py, models.py, schemas.py
+│   ├── src/domains/      # One package per domain: tenants/, chat/, documents/, insights/,
+│   │   └── <domain>/     # apikeys/, usage/, billing/ — router.py, service.py, repository.py, models.py, schemas.py
 │   ├── src/llm/          # Provider abstraction, resilience, cost accounting, rate limiting
+│   ├── scripts/          # seed_demo.py (+ demo_corpus/) — demo workspace seeding
 │   └── tests/
 infra/terraform/          # GCP modules: cloud-run, cloud-sql, secret-manager, cloud-tasks, gcs
 evals/                    # YAML datasets + LLM-as-judge runner
 ```
+
+### Product-specific notes
+
+- **Insights domain** (`src/domains/insights/`): summaries, risk registers,
+  extraction templates (built-ins are code constants in `builtins.py`, custom
+  ones in the `extraction_templates` table), comparison and reports. All
+  prompts live in `insights/prompts.py` — see `docs/claude-prompt-architecture.md`.
+  Citations come only from the numbered source list sent to the model.
+- **API keys** (`src/domains/apikeys/`): `pgda_…` keys, SHA-256-hashed, org-bound
+  (a forged `X-Org-Id` is ignored — see `core/auth.py` / `core/tenancy.py`).
+- **Demo mode**: `scripts/seed_demo.py --email <user>` renders the demo corpus
+  to multi-page PDFs and ingests inline; without an embeddings key it uses
+  deterministic hash embeddings (browsable, not semantic).
 
 ### Key architectural decisions (do not silently change these)
 

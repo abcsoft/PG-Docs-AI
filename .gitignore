@@ -39,3 +39,6 @@ storage/
 
 # Local content drafts (not part of the public repo)
 .drafts/
+
+# Local portable Postgres (dev-only, this machine)
+.local/

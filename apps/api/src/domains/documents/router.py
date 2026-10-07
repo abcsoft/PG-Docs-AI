@@ -11,7 +11,7 @@ from src.core.storage import BlobStorage, get_storage
 from src.core.tenancy import CurrentTenant
 from src.domains.documents.models import ALLOWED_MIME_TYPES, Document
 from src.domains.documents.repository import DocumentChunkRepository, DocumentRepository
-from src.domains.documents.schemas import DocumentOut
+from src.domains.documents.schemas import DocumentChunkOut, DocumentOut
 
 router = APIRouter(prefix="/documents", tags=["documents"])
 
@@ -37,6 +37,19 @@ async def get_document(document_id: uuid.UUID, tenant: CurrentTenant, db: DbSess
     if document is None:
         raise NotFound("Document not found")
     return _out(document)
+
+
+@router.get("/{document_id}/chunks")
+async def get_document_chunks(
+    document_id: uuid.UUID, tenant: CurrentTenant, db: DbSession
+) -> list[DocumentChunkOut]:
+    """Ordered source chunks for the document viewer — the same text the
+    retrieval layer sees, so citations can always be verified in place."""
+    document = await DocumentRepository(db, tenant).get(document_id)
+    if document is None:
+        raise NotFound("Document not found")
+    chunks = await DocumentChunkRepository(db, tenant).list_for_document(document_id)
+    return [DocumentChunkOut.model_validate(c, from_attributes=True) for c in chunks]
 
 
 @router.post("", status_code=status.HTTP_201_CREATED)

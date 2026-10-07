@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 
@@ -24,6 +25,8 @@ def test_worker_entry_point_has_a_complete_model_registry() -> None:
             "PATH": "",
             "DATABASE_URL": "postgresql+asyncpg://x:x@localhost/x",
             "REDIS_URL": "redis://localhost:6379/0",
+            # Windows sockets and crypto fail without SYSTEMROOT.
+            "SYSTEMROOT": os.environ.get("SYSTEMROOT", ""),
         },
         check=False,
     )

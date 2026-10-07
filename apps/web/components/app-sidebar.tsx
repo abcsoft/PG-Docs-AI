@@ -2,6 +2,7 @@
 
 import {
   BarChart3Icon,
+  FileBarChartIcon,
   FileTextIcon,
   MessageSquareIcon,
   SettingsIcon,
@@ -14,6 +15,7 @@ import { OrgSwitcher } from "@/components/org-switcher";
 const navItems = [
   { href: "/chat", label: "Chat", icon: MessageSquareIcon },
   { href: "/documents", label: "Documents", icon: FileTextIcon },
+  { href: "/reports", label: "Reports", icon: FileBarChartIcon },
   { href: "/usage", label: "Usage", icon: BarChart3Icon },
   { href: "/settings", label: "Settings", icon: SettingsIcon },
 ] as const;

@@ -1,4 +1,4 @@
-# Contributing to saas-genai-starter
+# Contributing to pg-docs-ai
 
 Thanks for contributing! This guide covers everything you need to get started.
 

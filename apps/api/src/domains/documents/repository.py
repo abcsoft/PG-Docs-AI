@@ -26,3 +26,11 @@ class DocumentChunkRepository(TenantScopedRepository[DocumentChunk]):
                 DocumentChunk.document_id == document_id,
             )
         )
+
+    async def list_for_document(self, document_id: uuid.UUID) -> list[DocumentChunk]:
+        result = await self._db.execute(
+            self._query()
+            .where(DocumentChunk.document_id == document_id)
+            .order_by(DocumentChunk.position)
+        )
+        return list(result.scalars().all())

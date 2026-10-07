@@ -6,6 +6,10 @@ from collections.abc import AsyncIterator, Callable
 os.environ["APP_ENV"] = "test"
 os.environ.setdefault("DATABASE_URL", "postgresql+asyncpg://app:app@localhost:5432/app_test")
 os.environ.setdefault("REDIS_URL", "redis://localhost:6379/1")
+# Tests are hermetic: a developer's local .env (e.g. a non-standard web port)
+# must not change CORS or link behaviour under test.
+os.environ["WEB_BASE_URL"] = "http://localhost:3000"
+os.environ["AUTH_JWKS_URL"] = "http://localhost:3000/api/auth/jwks"
 # Test-only Fernet key (32 zero bytes, base64) — never use outside tests.
 os.environ.setdefault("SECRET_ENCRYPTION_KEY", "MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA=")
 

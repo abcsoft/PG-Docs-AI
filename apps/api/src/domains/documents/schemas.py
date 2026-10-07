@@ -19,3 +19,11 @@ class DocumentOut(BaseModel):
     summary: str | None
     topics: list[str] | None
     created_at: datetime
+
+
+class DocumentChunkOut(BaseModel):
+    id: uuid.UUID
+    document_id: uuid.UUID
+    page: int | None
+    position: int
+    content: str

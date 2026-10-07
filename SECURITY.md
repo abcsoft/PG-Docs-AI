@@ -5,7 +5,7 @@
 **Please do not open a public issue for security vulnerabilities.**
 
 Report privately through GitHub's
-[**Report a vulnerability**](https://github.com/delmalih/saas-genai-starter/security/advisories/new)
+[**Report a vulnerability**](https://github.com/pgsofts/pg-docs-ai/security/advisories/new)
 flow (the *Security* tab → *Report a vulnerability*), or by email to
 **da.elmalih@gmail.com**.
 
