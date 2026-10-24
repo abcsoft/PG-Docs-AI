@@ -9,7 +9,7 @@ const sections = [
   {
     title: "1. Agreement",
     body: [
-      "These terms govern your use of PG Docs AI, operated at pgsofts.org (the “Service”). By creating an account you accept them.",
+      "These terms govern your use of PG Docs AI, a service operated by Perfect Group LLC at pgsofts.org (the “Service”). By creating an account you accept them; Perfect Group LLC is the contracting party for the Service.",
       "If you use the Service on behalf of an organization, you confirm you are authorized to accept on its behalf.",
     ],
   },
@@ -82,7 +82,8 @@ export default function TermsPage() {
       <div className="flex flex-col gap-2">
         <h1 className="font-heading text-3xl font-bold tracking-tight">Terms of Service</h1>
         <p className="text-sm text-muted-foreground">
-          Last updated: 7 October 2026 · PG Docs AI (pgsofts.org)
+          Last updated: 24 October 2026 · PG Docs AI (pgsofts.org), operated by
+          Perfect Group LLC
         </p>
       </div>
       {sections.map((section) => (

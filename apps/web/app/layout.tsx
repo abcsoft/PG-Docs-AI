@@ -14,7 +14,9 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.BETTER_AUTH_URL ?? "http://localhost:3000";
+// Canonical origin for metadata/OG/sitemap. The production default keeps
+// canonicals correct even when BETTER_AUTH_URL is not set in the deploy env.
+const siteUrl = process.env.BETTER_AUTH_URL ?? "https://www.pgsofts.org";
 
 export const metadata: Metadata = {
   // Resolves relative OG/canonical URLs site-wide.

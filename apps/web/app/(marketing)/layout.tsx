@@ -83,6 +83,9 @@ export default function MarketingLayout({
             <p className="text-xs text-muted-foreground">
               AI document intelligence with citations you can verify.
             </p>
+            <p className="text-xs text-muted-foreground">
+              PGSofts — Operated by Perfect Group LLC
+            </p>
           </div>
           {footerGroups.map((group) => (
             <div key={group.title} className="flex flex-col gap-2">
@@ -101,8 +104,8 @@ export default function MarketingLayout({
         </div>
         <div className="border-t">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} PG Docs AI · pgsofts.org</span>
-            <span>Every answer cites its sources.</span>
+            <span>© {new Date().getFullYear()} Perfect Group LLC. All rights reserved.</span>
+            <span>PGSofts · pgsofts.org</span>
           </div>
         </div>
       </footer>

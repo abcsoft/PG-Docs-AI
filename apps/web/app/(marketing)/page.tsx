@@ -30,6 +30,18 @@ const jsonLd = {
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 };
 
+// The corporate entity behind the PGSofts brand — the only Organization
+// node on the site; the SoftwareApplication above describes the product.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Perfect Group LLC",
+  legalName: "Perfect Group LLC",
+  alternateName: "PGSofts",
+  url: "https://pgsofts.org",
+  sameAs: ["https://www.linkedin.com/company/perfect-group-llc"],
+};
+
 const workflow = [
   {
     icon: UploadIcon,
@@ -250,6 +262,10 @@ export default function MarketingPage() {
         // Static literal above — nothing user-controlled is interpolated.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
 
       {/* Hero */}
       <section className="flex flex-col items-center gap-6 py-20 text-center sm:py-24">
@@ -280,6 +296,9 @@ export default function MarketingPage() {
             </a>
           </Button>
         </div>
+        <p className="text-xs text-muted-foreground">
+          PGSofts is a technology brand operated by Perfect Group LLC.
+        </p>
 
         {/* Product screenshot — a faithful mock of the chat view with citations */}
         <div className="mt-6 w-full max-w-4xl overflow-hidden rounded-xl border bg-muted/30 shadow-sm">

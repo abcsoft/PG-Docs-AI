@@ -59,6 +59,28 @@ export default function ContactPage() {
           </Card>
         ))}
       </div>
+      <div className="flex flex-col gap-3 rounded-xl border bg-muted/30 p-6">
+        <h2 className="font-heading text-lg font-semibold tracking-tight">Company Information</h2>
+        <dl className="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
+          <dt className="font-medium">Legal Business Name</dt>
+          <dd className="text-muted-foreground">Perfect Group LLC</dd>
+          <dt className="font-medium">Brand</dt>
+          <dd className="text-muted-foreground">PGSofts</dd>
+          <dt className="font-medium">Website</dt>
+          <dd className="text-muted-foreground">
+            <a
+              href="https://pgsofts.org"
+              className="underline underline-offset-4"
+              rel="noopener"
+            >
+              https://pgsofts.org
+            </a>
+          </dd>
+        </dl>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          PGSofts is a technology brand operated by Perfect Group LLC.
+        </p>
+      </div>
       <div className="flex flex-col gap-2 rounded-xl border bg-muted/30 p-6">
         <h2 className="font-heading text-lg font-semibold tracking-tight">
           Faster than email: in-app chat

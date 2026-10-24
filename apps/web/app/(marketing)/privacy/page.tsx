@@ -68,12 +68,16 @@ export default function PrivacyPage() {
       <div className="flex flex-col gap-2">
         <h1 className="font-heading text-3xl font-bold tracking-tight">Privacy Policy</h1>
         <p className="text-sm text-muted-foreground">
-          Last updated: 7 October 2026 · PG Docs AI (pgsofts.org)
+          Last updated: 24 October 2026 · PG Docs AI (pgsofts.org), operated by
+          Perfect Group LLC
         </p>
       </div>
       <p className="text-sm leading-relaxed text-muted-foreground">
-        This policy explains what data PG Docs AI collects when you use the service, why, and
-        what you can do about it. It is written to be read, not to be survived.
+        PG Docs AI (pgsofts.org) is a service operated by Perfect Group LLC
+        (“Perfect Group”, “we”), the data controller for the personal data
+        described here. This policy explains what we collect when you use the
+        service, why, and what you can do about it. It is written to be read,
+        not to be survived.
       </p>
       {sections.map((section) => (
         <section key={section.title} className="flex flex-col gap-2">

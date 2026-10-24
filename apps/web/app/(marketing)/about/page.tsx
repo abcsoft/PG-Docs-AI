@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CheckCircle2Icon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why PG Docs AI exists and what we believe about AI over business documents.",
+  description:
+    "PG Docs AI is a PGSofts product operated by Perfect Group LLC — why it exists and what we believe about AI over business documents.",
 };
 
 const beliefs = [
@@ -42,6 +44,44 @@ export default function AboutPage() {
         </p>
       </div>
       <section className="flex flex-col gap-3">
+        <h2 className="font-heading text-lg font-semibold tracking-tight">Our Company</h2>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          PGSofts is a technology brand operated by Perfect Group LLC, a legally
+          registered limited liability company in the United States.
+        </p>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          Through PGSofts, we develop and deliver technology solutions designed
+          to help businesses innovate, automate workflows, and build scalable
+          digital products.
+        </p>
+        <dl className="mt-1 grid gap-x-6 gap-y-2 rounded-xl border bg-muted/30 p-5 text-sm sm:grid-cols-[auto_1fr]">
+          <dt className="font-medium">Legal Business Name</dt>
+          <dd className="text-muted-foreground">Perfect Group LLC</dd>
+          <dt className="font-medium">Brand Name</dt>
+          <dd className="text-muted-foreground">PGSofts</dd>
+          <dt className="font-medium">Official Website</dt>
+          <dd className="text-muted-foreground">
+            <a
+              href="https://pgsofts.org"
+              className="underline underline-offset-4"
+              rel="noopener"
+            >
+              https://pgsofts.org
+            </a>
+          </dd>
+          <dt className="font-medium">LinkedIn</dt>
+          <dd className="text-muted-foreground">
+            <a
+              href="https://www.linkedin.com/company/perfect-group-llc"
+              className="underline underline-offset-4"
+              rel="noopener"
+            >
+              Perfect Group LLC
+            </a>
+          </dd>
+        </dl>
+      </section>
+      <section className="flex flex-col gap-3">
         <h2 className="font-heading text-lg font-semibold tracking-tight">What we believe</h2>
         <ul className="flex flex-col gap-2.5">
           {beliefs.map((belief) => (
@@ -53,10 +93,11 @@ export default function AboutPage() {
         </ul>
       </section>
       <p className="text-sm text-muted-foreground">
-        PG Docs AI is built and maintained by PG Softs. Reach us any time via the{" "}
-        <a href="/contact" className="underline underline-offset-4">
+        PG Docs AI is a PGSofts product, operated by Perfect Group LLC. Reach us
+        any time via the{" "}
+        <Link href="/contact" className="underline underline-offset-4">
           contact page
-        </a>
+        </Link>
         .
       </p>
     </div>
