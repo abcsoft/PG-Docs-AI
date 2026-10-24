@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CheckCircle2Icon } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "PG Docs AI is a PGSofts product operated by Perfect Group LLC — why it exists and what we believe about AI over business documents.",
@@ -46,8 +47,9 @@ export default function AboutPage() {
       <section className="flex flex-col gap-3">
         <h2 className="font-heading text-lg font-semibold tracking-tight">Our Company</h2>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          PGSofts is a technology brand operated by Perfect Group LLC, a legally
-          registered limited liability company in the United States.
+          PGSofts is a technology brand operated by Perfect Group LLC, a Wyoming
+          limited liability company (United States) formed on September 14,
+          2021.
         </p>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Through PGSofts, we develop and deliver technology solutions designed
@@ -57,16 +59,28 @@ export default function AboutPage() {
         <dl className="mt-1 grid gap-x-6 gap-y-2 rounded-xl border bg-muted/30 p-5 text-sm sm:grid-cols-[auto_1fr]">
           <dt className="font-medium">Legal Business Name</dt>
           <dd className="text-muted-foreground">Perfect Group LLC</dd>
+          <dt className="font-medium">Company Type</dt>
+          <dd className="text-muted-foreground">
+            Wyoming Limited Liability Company, United States
+          </dd>
+          <dt className="font-medium">Formation Date</dt>
+          <dd className="text-muted-foreground">September 14, 2021</dd>
+          <dt className="font-medium">Wyoming Filing ID</dt>
+          <dd className="text-muted-foreground">2021-001035529</dd>
+          <dt className="font-medium">Principal Office Address</dt>
+          <dd className="text-muted-foreground">
+            312 W 2nd St, Unit #A269, Casper, WY 82601, United States
+          </dd>
           <dt className="font-medium">Brand Name</dt>
           <dd className="text-muted-foreground">PGSofts</dd>
           <dt className="font-medium">Official Website</dt>
           <dd className="text-muted-foreground">
             <a
-              href="https://pgsofts.org"
+              href="https://www.pgsofts.org"
               className="underline underline-offset-4"
               rel="noopener"
             >
-              https://pgsofts.org
+              https://www.pgsofts.org
             </a>
           </dd>
           <dt className="font-medium">LinkedIn</dt>
@@ -80,6 +94,10 @@ export default function AboutPage() {
             </a>
           </dd>
         </dl>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          The principal office address is the one listed in our Wyoming state
+          formation documents — it is not a staffed public office.
+        </p>
       </section>
       <section className="flex flex-col gap-3">
         <h2 className="font-heading text-lg font-semibold tracking-tight">What we believe</h2>

@@ -4,6 +4,7 @@ import { MailIcon, MessageSquareIcon, ShieldIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description: "How to reach the PG Docs AI team — support, security, privacy and sales.",
 };
@@ -60,25 +61,42 @@ export default function ContactPage() {
         ))}
       </div>
       <div className="flex flex-col gap-3 rounded-xl border bg-muted/30 p-6">
-        <h2 className="font-heading text-lg font-semibold tracking-tight">Company Information</h2>
+        <h2 className="font-heading text-lg font-semibold tracking-tight">
+          Legal Business Information
+        </h2>
         <dl className="grid gap-x-6 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
           <dt className="font-medium">Legal Business Name</dt>
           <dd className="text-muted-foreground">Perfect Group LLC</dd>
+          <dt className="font-medium">Company Type</dt>
+          <dd className="text-muted-foreground">
+            Wyoming Limited Liability Company, United States
+          </dd>
+          <dt className="font-medium">Formation Date</dt>
+          <dd className="text-muted-foreground">September 14, 2021</dd>
+          <dt className="font-medium">Wyoming Filing ID</dt>
+          <dd className="text-muted-foreground">2021-001035529</dd>
           <dt className="font-medium">Brand</dt>
           <dd className="text-muted-foreground">PGSofts</dd>
           <dt className="font-medium">Website</dt>
           <dd className="text-muted-foreground">
             <a
-              href="https://pgsofts.org"
+              href="https://www.pgsofts.org"
               className="underline underline-offset-4"
               rel="noopener"
             >
-              https://pgsofts.org
+              https://www.pgsofts.org
             </a>
           </dd>
         </dl>
+        <address className="text-sm leading-relaxed text-muted-foreground not-italic">
+          <span className="font-medium text-foreground">Principal Office Address</span>{" "}
+          (on state filing): 312 W 2nd St, Unit #A269, Casper, WY 82601, United
+          States
+        </address>
         <p className="text-xs leading-relaxed text-muted-foreground">
-          PGSofts is a technology brand operated by Perfect Group LLC.
+          This is the principal office address listed in our Wyoming state
+          formation documents — not a staffed office or customer service
+          location. Please reach us through the email channels above.
         </p>
       </div>
       <div className="flex flex-col gap-2 rounded-xl border bg-muted/30 p-6">

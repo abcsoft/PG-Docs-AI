@@ -103,6 +103,22 @@ export default function MarketingLayout({
           ))}
         </div>
         <div className="border-t">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-1 px-4 py-4 text-xs leading-relaxed text-muted-foreground">
+            <p>
+              <span className="font-medium text-foreground">Perfect Group LLC</span> — A
+              Wyoming Limited Liability Company, USA
+            </p>
+            <p>
+              Wyoming Secretary of State Filing ID: 2021-001035529 · Formed September 14,
+              2021
+            </p>
+            <address className="not-italic">
+              Principal Office Address (on state filing): 312 W 2nd St, Unit #A269, Casper,
+              WY 82601, United States
+            </address>
+          </div>
+        </div>
+        <div className="border-t">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 text-xs text-muted-foreground">
             <span>© {new Date().getFullYear()} Perfect Group LLC. All rights reserved.</span>
             <span>PGSofts · pgsofts.org</span>
