@@ -50,7 +50,9 @@ export const metadata: Metadata = {
     description:
       "Answers, summaries, extractions and reports from your documents — with verifiable page-level citations.",
   },
-  alternates: { canonical: "/" },
+  // No global canonical here: root-level alternates are inherited by every
+  // route, which made all public pages canonicalize to "/". Each page
+  // declares its own canonical instead.
 };
 
 export default function RootLayout({

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRightIcon,
@@ -32,14 +33,23 @@ const jsonLd = {
 
 // The corporate entity behind the PGSofts brand — the only Organization
 // node on the site; the SoftwareApplication above describes the product.
+// The filed office address is intentionally NOT here: structured data
+// asserts current facts, and the address is only verified as of the 2021
+// state filing (it is published on the pages with an "on state filing"
+// qualifier instead).
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Perfect Group LLC",
+  name: "PGSofts",
   legalName: "Perfect Group LLC",
-  alternateName: "PGSofts",
-  url: "https://pgsofts.org",
+  alternateName: "PG Docs AI",
+  foundingDate: "2021-09-14",
+  url: "https://www.pgsofts.org",
   sameAs: ["https://www.linkedin.com/company/perfect-group-llc"],
+};
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
 };
 
 const workflow = [
